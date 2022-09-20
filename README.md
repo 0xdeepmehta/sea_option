@@ -3,7 +3,7 @@
 ## What is the options market?
 An options market is a derivative market where you trade contracts of underlying assets. options contract allows ( but is not an obligation) trading between two parties to buy and sell underlying assets at a fixed price within a specific period of time.
 
-### ELI5
+### !ELI5
 - Alice wants to trade BTC, and the market price of BTC is $25,000.
 - He can go into the market and looks for an Options market that allows him to trade a BTC contract.
 - Options market gibs him to right (but not obligation) to SHORT/LONG BTC at a fixed price and in a specified time period.
