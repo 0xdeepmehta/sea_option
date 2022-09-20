@@ -18,17 +18,17 @@ An options market is a derivative market where you trade contracts of underlying
 ## Explain Contract instruction
 - `init_option`
     - this instruction is used to create an options market with the following arguments.
-    - `payer: Signer` is basically the initializer of the contract
+    - `payer: Signer` is basically the initializer of the contract.
     - `market: Empty[OptionMarket]` is a PDA which is used to hold market state.
-    -`base_mint: TokenMint` is the underlying asset which is being traded
-    - `collateral_mint: TokenMint` the asset used to trade the contracts i.e $USDC
-    - `option_note_mint: Empty[TokenMint]` this mint represents option's deposit notes
-    - `vault: Empty[TokenAccount]` is account with custody over the collateral tokens
-    - `strike_price: u64` ia the price at which you want to execrise the underlying assets
-    - `expiry_timestamp: i64` is the expiry timestamp of the contract
-    - `is_put: bool` is a flag representing if the contract is put or not
-    - `lot_size: u64` is the number of contracts you want to trade
-    - `premium_per_lot: u64` premium decided by the market per lot
+    - `base_mint: TokenMint` is the underlying asset which is being traded.
+    - `collateral_mint: TokenMint` the asset used to trade the contracts i.e $USDC.
+    - `option_note_mint: Empty[TokenMint]` this is the mint for represents of option's deposit notes.
+    - `vault: Empty[TokenAccount]` is PDA account with custody over the collateral tokens.
+    - `strike_price: u64` is the price at which you want to execrise the underlying assets.
+    - `expiry_timestamp: i64` is the expiry timestamp of the contract.
+    - `is_put: bool` is a flag representing if the contract is put or call. `put` mean you are bullish and wants to long the underlying assets. `call` mean you want to short it.
+    - `lot_size: u64` is the number of contracts you want to buy.
+    - `premium_per_lot: u64` Premium is the price for each contract determined by market demand
 
 <br>
 
