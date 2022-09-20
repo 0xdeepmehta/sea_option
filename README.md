@@ -36,8 +36,31 @@ Options market is a derivative market where you trade contracts of a underlying 
 
 - `settle_expiry` is used to record the market price of the  underlying asset at the time of settlement.
 
-- `redeem` is used by the contract buyer to settle the contract. it settles trade in the collateral asset ($USDC).
-
+- `redeem` is used by the user to settles the contract. It settles trade in cash, in our case that will be collateral asset ($USDC). The core logic for this ix is 
+    - ```python
+        assert market.expiry_price <= 0, 'Expiry price not found'
+        
+        if market.is_put == False:
+            if market.expiry_price > market.strike_price:
+            profit_amount = (market.expiry_price - market.strike_price) * u64(lot_factor)
+            print("profit :: ", profit_amount)
+            vault.transfer(
+                authority= market,
+                to = redeemer_account,
+                amount=profit_amount,
+                signer=["market", base_mint, collateral_mint]
+            )
+        else:
+            if market.expiry_price < market.strike_price:
+            profit_amount = (market.strike_price - market.expiry_price) * u64(lot_factor)
+            print("profit :: ", profit_amount)
+            vault.transfer(
+                authority= market,
+                to = redeemer_account,
+                amount=profit_amount,
+                signer=["market", base_mint, collateral_mint]
+            )
+        ```
 ### Prerequisites
 1. [Solana](https://docs.solana.com/cli/install-solana-cli-tools)
 2. [Anchor](https://project-serum.github.io/anchor/getting-started/installation.html#install-rust)
